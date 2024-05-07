@@ -7,6 +7,16 @@ pipeline {
                 // Build the code using Maven
                 echo 'Building the code using Maven'
             }
+            post {
+                always {
+                    emailext (
+                        to: "pruthvigowda.satish@gmail.com",
+                        subject: "Pipeline Execution Status",
+                        body: "Pipeline execution has completed.",
+                        attachLog: true
+                    )
+                }
+            }
         }
         stage('Unit and Integration Tests') {
             steps {
@@ -14,6 +24,16 @@ pipeline {
                 echo 'Running unit tests using JUnit'
                 // Run integration tests using Selenium
                 echo 'Running integration tests using Selenium'
+            }
+            post {
+                always {
+                    emailext (
+                        to: "pruthvigowda.satish@gmail.com",
+                        subject: "Unit and Integration Tests Status",
+                        body: "Unit and integration tests have completed.",
+                        attachLog: true
+                    )
+                }
             }
         }
         stage('Code Analysis') {
@@ -26,6 +46,16 @@ pipeline {
             steps {
                 // Perform security scan using OWASP ZAP
                 echo 'Performing security scan using OWASP ZAP'
+            }
+            post {
+                always {
+                    emailext (
+                        to: "pruthvigowda.satish@gmail.com",
+                        subject: "Security Scan Status",
+                        body: "Security scan has completed.",
+                        attachLog: true
+                    )
+                }
             }
         }
         stage('Deploy to Staging') {
@@ -45,17 +75,6 @@ pipeline {
                 // Deploy application to production server (AWS EC2)
                 echo 'Deploying application to production server (AWS EC2)'
             }
-        }
-    }
-
-    post {
-        always {
-            emailext (
-                to: "pruthvigowda.satish@gmail.com",
-                subject: "Pipeline Execution Status",
-                body: "Pipeline execution has completed.",
-                attachLog: true
-            )
         }
     }
 }
