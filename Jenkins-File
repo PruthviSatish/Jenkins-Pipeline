@@ -11,7 +11,7 @@ pipeline {
                 always {
                     mail to: "pruthvigowda.satish@gmail.com",
                     subject: "Build Status Email",
-                    body: "Build log attached!"
+                    body: "Build log attached!",
                     attachLog: true
                 }
             }
@@ -27,7 +27,7 @@ pipeline {
                 always {
                     mail to: "pruthvigowda.satish@gmail.com",
                     subject: "Test Status Email",
-                    body: "Test log attached!"
+                    body: "Test log attached!",
                     attachLog: true
                 }
             }
@@ -47,7 +47,7 @@ pipeline {
                 always {
                     mail to: "pruthvigowda.satish@gmail.com",
                     subject: "Secuity Scan Status Email",
-                    body: "Security log attached!"
+                    body: "Security log attached!",
                     attachLog: true
                 }    
             }
