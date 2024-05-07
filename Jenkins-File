@@ -12,7 +12,7 @@ pipeline {
                     mail to: "pruthvigowda.satish@gmail.com",
                     subject: "Build Status Email",
                     body: "Build log attached!",
-                    attachments: '**/build.log'
+                    attach: "/path/to/build/log.txt"
                 }
             }
         }
